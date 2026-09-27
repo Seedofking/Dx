@@ -76,8 +76,6 @@ int main()
     Tree tree(la);
     tree.Create_Tree();
 
-
-
     system("pause");
     return 0;
 }

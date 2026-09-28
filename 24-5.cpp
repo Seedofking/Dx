@@ -26,6 +26,7 @@ public:
     // }
 
     friend double calculateAverageScore(vector<Student> stu);
+    friend double calculateAverageScore(vector<Student*> stup);
 };
 
 double calculateAverageScore(vector<Student> stu)
@@ -54,17 +55,50 @@ vector<Student> Multi_Set_Stu(int Num)
     return stu;
 }
 
+double calculateAverageScore(vector<Student*> stup)
+{
+    int len = stup.size();
+    int sum = 0;
+    for (int i = 0; i < len; i++)
+    {
+        sum += stup[i]->score;
+    }
+    return 1.0 * sum / stup.size();
+
+}
+
+vector<Student*> Multi_Set_Stup(int Num)
+{
+    vector<Student*> stup;
+    for (int i = 0; i < Num; i++)
+    {
+        Student* p = new Student;
+        cout << "Enter Student #" << i << " : " << endl;
+        p->SetName();   //栈内存上访问对象用.  堆内存上访问对象用->
+        p->SetScore();
+        stup.push_back(p);
+    }
+    return stup;
+}
 
 int main ()
 {
     int Num;
     double Aver;
-    vector<Student> stu;
+    // vector<Student> stu;
+    // cout << "Please enter number of students: " << endl;
+    // cin >> Num;
+    // stu = Multi_Set_Stu(Num);
+    //
+    // Aver = calculateAverageScore(stu);
+    // cout << "The average score is: " << Aver << endl;
+
+    vector<Student*> stup;
     cout << "Please enter number of students: " << endl;
     cin >> Num;
-    stu = Multi_Set_Stu(Num);
+    stup = Multi_Set_Stup(Num);
 
-    Aver = calculateAverageScore(stu);
+    Aver = calculateAverageScore(stup);
     cout << "The average score is: " << Aver << endl;
 
 

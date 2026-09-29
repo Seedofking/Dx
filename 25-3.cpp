@@ -41,16 +41,14 @@ public:
     void Handler()
     {
         Input();
-        static int i = 0;
-        i = 0;
+
         for (vector<string>::iterator it = Practice.begin(); it != Practice.end(); ++it)
         {
-            i++;
-            Judgement(*it, i);
+            Judgement(*it);
         }
     }
 
-    void Judgement(string& s, int Pos)
+    void Judgement(string& s)
     {
         // cout << s << endl;
         // cout << s.substr(0, 5) << endl;
@@ -58,43 +56,49 @@ public:
         // cout << ((s.substr(0, 2) == "ls") == 0) << endl;
         if ((s.substr(0, 5)).compare("touch") == 0)
         {
-            cout << "1" << endl;
             string pt = s.substr(6);
-            static int i = 0;
-            i = 0;
-            if (Files.size() == 0)
+
+            bool exist = false;
+            for (vector<string>::iterator it = Files.begin(); it != Files.end(); ++it)
             {
-                cout << "2" << endl;
-                Files.push_back(pt);
-            }
-            else
-            {
-                for (vector<string>::iterator it = Files.begin(); it != Files.end(); it++)
+                if (*it == pt)
                 {
-                    i++;
-                    if (*it == pt)
-                    {
-                        break;
-                    }
-                    if (i == Pos)
-                    {
-                        cout << "2" << endl;
-                        Files.push_back(pt);
-                    }
+                    exist = true;
+                    break;
                 }
+            }
+            if (!exist)
+            {
+                Files.push_back(pt);
             }
         }
         else if (s.substr(0, 2) == "rm")
         {
             string pt = s.substr(3);
-            static int i = 0;
-            i = 0;
-            for (vector<string>::iterator it = Files.begin(); it != Files.end(); it++)
+            //为了不每次都++, 遍历时使用while, 而非for循环
+            /*            for (vector<string>::iterator it = Files.begin(); it != Files.end(); it++)
+                        {
+                            i++; //i++在使用迭代器时没有意义，而且删除元素之后，it的值可能不再准确
+                            if (*it == pt)
+                            {
+                                // Files.erase(Files.begin() + i);  erase之后原迭代器会失效，需要用erase返回值接受新的迭代器
+                                //而且erase之后再使用++it会跳过元素，erase之后迭代器就会接下一个元素，不需要再++
+                                it = Files.erase(it);
+                            }
+                        }
+            */
+            vector<string>::iterator it = Files.begin();
+            while (it != Files.end())
             {
-                i++;
                 if (*it == pt)
                 {
-                    Files.erase(Files.begin() + i);
+                    it = Files.erase(it);
+                }
+                // Files.erase(Files.begin() + i);  erase之后原迭代器会失效，需要用erase返回值接受新的迭代器
+                //而且erase之后再使用++it会跳过元素，erase之后迭代器就会接下一个元素，不需要再++
+                else
+                {
+                    ++it;
                 }
             }
         }
@@ -109,26 +113,25 @@ public:
         {
             string pt = s.substr(7);
             int Space_Pos = pt.find(" ");
-            string PreName = pt.substr(0, Space_Pos + 1);
+            string PreName = pt.substr(0, Space_Pos);
             string ToName = pt.substr(Space_Pos + 1);
 
             for (vector<string>::iterator it = Files.begin(); it != Files.end(); it++)
             {
                 if (*it == PreName)
                 {
-                    static int i = 0;
-                    i = 0;
+                    bool exist = false; //用标志位来判断是否存在，而不是用break能不能走到最后来判断有没有存在
                     for (vector<string>::iterator vit = Files.begin(); vit != Files.end(); vit++)
                     {
-                        i++;
                         if (*vit == ToName)
                         {
+                            exist = true;
                             break;
                         }
-                        if (i == Pos)
-                        {
-                            Files[i] = ToName;
-                        }
+                    }
+                    if (!exist)
+                    {
+                        *it = ToName;
                     }
                 }
             }

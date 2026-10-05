@@ -21,8 +21,8 @@ public:
 
                 cout << "*";
 
-                Mid_Space = center - (Front_Space + 1);
-                Create_Space(Mid_Space);
+                Mid_Space = center - (Front_Space + 1); //Mid_Space 根本就算错了，中间的减了前面空格和*，
+                Create_Space(Mid_Space); //               center自己不能算的
 
                 Create_Space(Mid_Space - 1);
 

@@ -3,11 +3,13 @@ project(Dx)
 
 set(CMAKE_CXX_STANDARD 20)
 
+add_executable(1-26B-1 1-26B-1.cpp)
 add_executable(2-24-1 2-24-1.cpp)
 add_executable(2-24-2 2-24-2.cpp)
 add_executable(2-24-3 2-24-3.cpp)
 add_executable(2-24-4 2-24-4.cpp)
 add_executable(2-24-5 2-24-5.cpp)
+add_executable(2-25-1 2-25-1.cpp)
 add_executable(24-1 24-1.cpp)
 add_executable(24-2 24-2.cpp)
 add_executable(24-3 24-3.cpp)

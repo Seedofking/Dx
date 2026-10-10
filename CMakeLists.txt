@@ -4,6 +4,10 @@ project(Dx)
 set(CMAKE_CXX_STANDARD 20)
 
 
+add_executable(01 01.cpp)
+add_executable(02 02.cpp)
+add_executable(03 03.cpp)
+
 add_executable(2-24-1-Tree T24A1-Tree.cpp)
 add_executable(2-24-2-ArrSort T24A2-ArrSort.cpp)
 add_executable(2-24-3-xAyB T24A3-xAyB.cpp)

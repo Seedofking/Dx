@@ -20,6 +20,14 @@ public:
 
     void Create_DX()
     {
+        for (int i = 1; i <= (1 + n) / 2; i++)
+        {
+            Create_Row(i);
+        }
+        for (int i = (1 + n) / 2 - 1; i >= 1; i--)
+        {
+            Create_Row(i);
+        }
     }
 
     void Create_Row(int r)
@@ -34,9 +42,34 @@ public:
 
         if (r == 1)
         {
+            cout << "*";
+            int space = n - 1;
+            Create_Space(space);
+            cout << "*";
+            Create_Space(n - 2);
             cout << "*" << endl;
-            int space =
-        }void Create_Space(int sp)
+        }
+        else
+        {
+            cout << "*";
+            Create_Space(Fspace);
+            cout << "*";
+            Create_Space(Mspace);
+            cout << "*";
+            Create_Space(2 * n - 1);
+            cout << "*";
+
+            Create_Space(2 * n - 1);
+            cout << "*";
+            Create_Space(Mspace);
+            cout << "*";
+            Create_Space(Fspace);
+            cout << "*";
+            cout << endl;
+        }
+    }
+
+    void Create_Space(int sp)
     {
         for (int i = 1; i <= sp; i++)
         {
@@ -48,6 +81,11 @@ public:
 
 int main()
 {
+    int n;
+    cin >> n;
+
+    Solution s(n);
+    s.Create_DX();
     system("pause");
     return 0;
 }

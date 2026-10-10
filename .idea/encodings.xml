@@ -2,6 +2,8 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/03.cpp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/04.cpp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/05.cpp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/24-1.cpp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/25-4.cpp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/T24A1-Tree.cpp" charset="GBK" />
